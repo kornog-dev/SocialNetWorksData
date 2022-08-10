@@ -32,13 +32,6 @@ class SocialNetwork
      */
     private string $profileUrl;
 
-    function __construct(string $name, string $profileUrl, ?string $logoUrl = null)
-    {
-        $this->name = $name;
-        $this->profileUrl = $profileUrl;
-        $this->logoUrl = $logoUrl;
-    }
-
     public function getId(): ?int
     {
         return $this->id;

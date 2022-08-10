@@ -1,8 +1,46 @@
 @import 'modules/_sidebar.css';
 @import 'layouts/_dashboard.css';
 
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
 body {
     width : 100vw;
     min-height: 100vh;
     margin : 0!important;
+}
+
+main{
+    background-color: #44475a;
+    color:white;
+}
+
+main h1 {
+    font-size:1.3em;
+    color : #6272a4;
+    text-transform: uppercase;
+}
+
+main table tr td {
+    color:white;
+}
+
+main table tr th {
+    color:#ffb86c;
+}
+
+main table td a {
+    color:#ff79c6;
+}
+
+main table td a .bi-eye-fill {
+    color:#8be9f2;
+}
+
+main table td a .bi-pencil-fill {
+    color:#50fa7b;
+}
+
+main table td a .bi-trash-fill {
+    color:#ff5555;
 }

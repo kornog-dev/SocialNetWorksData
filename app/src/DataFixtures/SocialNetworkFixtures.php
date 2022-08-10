@@ -10,9 +10,6 @@ class SocialNetworkFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
-
         $facebook = new SocialNetwork("Facebook", "", "");
         $twitter = new SocialNetwork("Twitter", "", "");
         $instagram = new SocialNetwork("Instagram", "", "");
