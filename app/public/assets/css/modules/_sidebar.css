@@ -1,0 +1,30 @@
+#sidebar {
+    background-color: #282a36;
+    min-height:100vh;
+    height:100%;
+}
+
+#sidebar h1 {
+    font-size:1.2em;
+    color:#faf18c;
+}
+
+#sidebar h2 {
+    font-size: 1.1em;
+    margin-top: 2em;
+    color:#8be9f2;
+}
+
+#sidebar ul {
+    list-style: none;
+    padding-left:0;
+}
+
+#sidebar li {
+    margin-top:0.8em;
+}
+
+#sidebar a {
+    color:white;
+    text-decoration: none;
+}
