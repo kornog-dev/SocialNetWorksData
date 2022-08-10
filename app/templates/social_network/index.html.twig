@@ -30,7 +30,7 @@
                         <td>
                             <a href="{{ path('app_social_network_show', {'id': social_network.id}) }}"><span class="bi-eye-fill"></span></a>
                             <a href="{{ path('app_social_network_edit', {'id': social_network.id}) }}"><span class="bi-pencil-fill"></span></a>
-                            <a href=""><span class="bi-trash-fill"></span></a>
+                            <a href="{{ path('app_social_network_edit', {'id': social_network.id}) }}"><span class="bi-trash-fill"></span></a>
                         </td>
                     </tr>
                 {% else %}
