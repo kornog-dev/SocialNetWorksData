@@ -1,0 +1,44 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Publications{% endblock %}
+
+{% block content %}
+<main id="sn-index" class="col-10 p-5">
+    <h1>Publications</h1>
+
+    <section class="row mt-5">
+        <div class="col-3">
+            <a class="btn btn-light" href="{{ path('app_post_new') }}">Ajouter une publication</a>
+        </div>
+
+        <table class="table mt-5">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date de Publication</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.name }}</td>
+                    <td>{{ post.publishDate ? post.publishDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('app_post_show', {'id': post.id}) }}"><span class="bi-eye-fill"></span></a>
+                        <a href="{{ path('app_post_edit', {'id': post.id}) }}"><span class="bi-pencil-fill"></span></a>
+                        <a href="{{ path('app_post_edit', {'id': post.id}) }}"><span class="bi-trash-fill"></span></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}
