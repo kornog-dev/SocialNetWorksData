@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SocialNetworkRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,16 @@ class SocialNetwork
      * @ORM\Column(type="string", length=255)
      */
     private string $profileUrl;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SocialNetworkData::class, mappedBy="network")
+     */
+    private $data;
+
+    public function __construct()
+    {
+        $this->data = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +81,36 @@ class SocialNetwork
     public function setProfileUrl(string $profileUrl): self
     {
         $this->profileUrl = $profileUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SocialNetworkData>
+     */
+    public function getData(): Collection
+    {
+        return $this->data;
+    }
+
+    public function addData(SocialNetworkData $data): self
+    {
+        if (!$this->data->contains($data)) {
+            $this->data[] = $data;
+            $data->setManyToOne($this);
+        }
+
+        return $this;
+    }
+
+    public function removeData(SocialNetworkData $data): self
+    {
+        if ($this->data->removeElement($data)) {
+            // set the owning side to null (unless already changed)
+            if ($data->getManyToOne() === $this) {
+                $data->setManyToOne(null);
+            }
+        }
 
         return $this;
     }
