@@ -35,6 +35,8 @@ class PostController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime($form->get('publishDate')->getData());
+            $post->setPublishDate($date);
             $postRepository->add($post, true);
 
             return $this->redirectToRoute('app_post_index', [], Response::HTTP_SEE_OTHER);

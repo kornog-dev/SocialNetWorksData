@@ -1,4 +1,24 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<section class="mt-5">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="col-4">
+        <div class="mt-2">
+            {{ form_label(form.name, 'Nom', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.name, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+
+        <div class="mt-2">
+            {{ form_label(form.publishDate, 'Date de publication', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.publishDate, { 'attr' : { 'class' : 'form-control', 'placeholder' : 'YYYY-MM-DD hh:mm:ss' }} ) }}
+        </div>
+
+        <div class="mt-2">
+            {{ form_label(form.type, 'Type de Post', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.type, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+
+        <button class="btn btn-light mt-4">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
+    {{ form_end(form) }}
+</section>

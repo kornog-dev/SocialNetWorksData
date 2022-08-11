@@ -1,11 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block title %}New Post{% endblock %}
+{% block title %}Ajouter une publication{% endblock %}
 
-{% block body %}
-    <h1>Create new Post</h1>
+{% block content %}
+    <main id="sn-new" class="col-10 p-5">
+        <h1>Ajouter une publication</h1>
 
-    {{ include('post/_form.html.twig') }}
+        <a class="my-5 btn btn-primary" href="{{ path('app_post_index') }}">Retour à la liste</a>
+        {{ include('post/_form.html.twig') }}
 
-    <a href="{{ path('app_post_index') }}">back to list</a>
+    </main>
 {% endblock %}
