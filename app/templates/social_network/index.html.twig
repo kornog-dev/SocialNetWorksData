@@ -25,7 +25,7 @@
                     <tr>
                         <td>{{ social_network.id }}</td>
                         <td>{{ social_network.name }}</td>
-                        <td>{{ social_network.logoUrl }}</td>
+                        <td><span class="{{ social_network.logoUrl }}"></span></td>
                         <td>{{ social_network.profileUrl }}</td>
                         <td>
                             <a href="{{ path('app_social_network_show', {'id': social_network.id}) }}"><span class="bi-eye-fill"></span></a>
