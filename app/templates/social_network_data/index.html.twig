@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Social Networks Data{% endblock %}
+
+{% block content %}
+<main id="snd-index" class="col-10 p-5">
+    <h1>Données des réseaux sociaux</h1>
+
+    <section class="row mt-5">
+        <div class="col-3">
+            <a class="btn btn-light" href="{{ path('app_social_network_data_new') }}">Ajouter des données</a>
+        </div>
+        <table class="table mt-5">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Réseau</th>
+                <th>Date</th>
+                <th>Nombre de followers</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for social_network_datum in social_network_datas %}
+                <tr>
+                    <td>{{ social_network_datum.id }}</td>
+                    <td>{{ social_network_datum.network.name }}</td>
+                    <td>{{ social_network_datum.date ? social_network_datum.date|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ social_network_datum.followerCount }}</td>
+                    <td>
+                        <a href="{{ path('app_social_network_data_show', {'id': social_network_datum.id}) }}"><span class="bi-eye-fill"></span></a>
+                        <a href="{{ path('app_social_network_data_edit', {'id': social_network_datum.id}) }}"><span class="bi-pencil-fill"></span></a>
+                        <a href="{{ path('app_social_network_data_edit', {'id': social_network_datum.id}) }}"><span class="bi-trash-fill"></span></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Pas de données</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+{% endblock %}

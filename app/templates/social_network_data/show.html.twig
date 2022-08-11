@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SocialNetworkData{% endblock %}
+
+{% block body %}
+    <h1>SocialNetworkData</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ social_network_datum.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ social_network_datum.date ? social_network_datum.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FollowerCount</th>
+                <td>{{ social_network_datum.followerCount }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_social_network_data_index') }}">back to list</a>
+
+    <a href="{{ path('app_social_network_data_edit', {'id': social_network_datum.id}) }}">edit</a>
+
+    {{ include('social_network_data/_delete_form.html.twig') }}
+{% endblock %}
