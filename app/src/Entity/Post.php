@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,16 @@ class Post
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostData::class, mappedBy="post")
+     */
+    private $data;
+
+    public function __construct()
+    {
+        $this->data = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,6 +82,36 @@ class Post
     public function setType(?PostType $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PostData>
+     */
+    public function getData(): Collection
+    {
+        return $this->data;
+    }
+
+    public function addData(PostData $data): self
+    {
+        if (!$this->data->contains($data)) {
+            $this->data[] = $data;
+            $data->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeData(PostData $data): self
+    {
+        if ($this->data->removeElement($data)) {
+            // set the owning side to null (unless already changed)
+            if ($data->getPost() === $this) {
+                $data->setPost(null);
+            }
+        }
 
         return $this;
     }

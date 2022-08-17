@@ -39,9 +39,15 @@ class SocialNetwork
      */
     private $data;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PostData::class, mappedBy="network")
+     */
+    private $postData;
+
     public function __construct()
     {
         $this->data = new ArrayCollection();
+        $this->postData = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,36 @@ class SocialNetwork
             // set the owning side to null (unless already changed)
             if ($data->getManyToOne() === $this) {
                 $data->setManyToOne(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PostData>
+     */
+    public function getPostData(): Collection
+    {
+        return $this->postData;
+    }
+
+    public function addPostData(PostData $postData): self
+    {
+        if (!$this->postData->contains($postData)) {
+            $this->postData[] = $postData;
+            $postData->setNetwork($this);
+        }
+
+        return $this;
+    }
+
+    public function removePostData(PostData $postData): self
+    {
+        if ($this->postData->removeElement($postData)) {
+            // set the owning side to null (unless already changed)
+            if ($postData->getNetwork() === $this) {
+                $postData->setNetwork(null);
             }
         }
 
