@@ -3,11 +3,19 @@
 {% block title %}Modifier une publication{% endblock %}
 
 {% block content %}
-    <main id="post-new" class="col-10 p-5">
+    <main id="post-edit" class="col-10 offset-2 p-5">
         <h1>Modifier une publication</h1>
 
         <a class="my-5 btn btn-primary" href="{{ path('app_post_index') }}">Retour à la liste</a>
         {{ include('post/_delete_form.html.twig') }}
+
+        <ul>
+            {% for datum in post.data %}
+                <li>
+                    <a class="btn btn-{{ datum.network.name | lower }}" href="{{ path('app_post_data_edit', {'id': datum.id}) }}"><span class="{{ datum.network.logoUrl }}"></span>   Modifier les données {{ datum.network.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
 
         {{ include('post/_form.html.twig') }}
     </main>

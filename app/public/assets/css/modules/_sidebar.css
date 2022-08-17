@@ -1,7 +1,9 @@
 #sidebar {
     background-color: #282a36;
-    min-height:100vh;
-    height:150vh;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:0;
 }
 
 #sidebar h1 {

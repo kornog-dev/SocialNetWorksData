@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\PostData;
+use App\Entity\SocialNetwork;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +38,32 @@ class PostDataRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    /**
+    * @return PostData[] Returns an array of PostData objects
+    */
+    public function findByYearAndNetwork($value, SocialNetwork $network): array
+    {
+        $year = intval($value);
+        $previousYear = $year - 1;
+        $nextYear = $year + 1;
+
+        //$previousYearDate = \DateTime::createFromFormat("Y", $previousYear);
+        //$nextYearDate = \DateTime::createFromFormat("Y", $nextYear);
+
+        return $this->createQueryBuilder('pdat')
+            ->leftJoin('pdat.post', 'p')
+            ->andWhere('p.publishDate > :prev')
+            ->andWhere('p.publishDate < :next')
+            ->andWhere('pdat.network = :network')
+            ->setParameter('prev', $previousYear."-01-01 00:00:00")
+            ->setParameter('next', $nextYear."-01-01 00:00:00")
+            ->setParameter('network', $network)
+            ->orderBy('pdat.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
 //    /**
