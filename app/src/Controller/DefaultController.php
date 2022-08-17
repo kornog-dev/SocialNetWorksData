@@ -62,9 +62,9 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/dashboard-postdata-datasets", name="dashboard_post_data_datasets")
+     * @Route("/dashboard-postdata-datasets/{year}", name="dashboard_post_data_datasets")
      */
-    public function dashboardPostDataDatasets(ManagerRegistry $doctrine): Response
+    public function dashboardPostDataDatasets(ManagerRegistry $doctrine, string $year): Response
     {
         $datasets = [];
         $labels = [];
@@ -96,7 +96,7 @@ class DefaultController extends AbstractController
                 $dataset["borderColor"] = "#50FA7B";
             }
 
-            $postData = $doctrine->getRepository(PostData::class)->findBy(["network" => $network]);
+            $postData = $doctrine->getRepository(PostData::class)->findByYearAndNetwork($year, $network);
 
             foreach($postData as $postDatum)
             {
