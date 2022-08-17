@@ -1,7 +1,7 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    <main id="dashboard" class="col-10 p-5">
+    <main id="dashboard" class="col-10 offset-2 p-5">
         <h1>Dashboard</h1>
         <section id="dashboard-networks" class="row">
             <h2 class="col-12">Réseaux Sociaux</h2>
@@ -18,13 +18,14 @@
             {% endfor %}
         </section>
         <section id="dashboard-post-data" class="row">
-            <h2 class="col-12">Couverture des publications</h2>
-            <section>
-                <canvas id="dashboard-post-data-chart" class="col-10" height="500"></canvas>
+            <h2 class="col-12">Couverture des publications 2022</h2>
+            <section id="2022">
+                <canvas id="dashboard-post-data-chart-2022" class="col-10" height="500"></canvas>
             </section>
         </section>
     </main>
     <script>
-        datasets_url = "{{ path('dashboard_post_data_datasets') }}";
+        datasets_url_2022 = "{{ path('dashboard_post_data_datasets', { 'year' : '2022' }) }}";
+        datasets_url_2021 = "{{ path('dashboard_post_data_datasets', { 'year' : '2021' }) }}";
     </script>
 {% endblock %}

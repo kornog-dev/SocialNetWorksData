@@ -44,3 +44,35 @@ main table td a .bi-pencil-fill {
 main table td a .bi-trash-fill {
     color:#ff5555;
 }
+
+#post-edit ul {
+    list-style: none;
+    padding-left:0;
+    margin-top: 2.5em;
+}
+
+#post-edit ul li {
+    margin-top:0.5em;
+    margin-bottom: 0.5em;
+}
+
+main a.btn-facebook {
+    background-color: #4267B2;
+    color:#ffffff;
+}
+
+main a.btn-twitter {
+    background-color: #1DA1F2;
+    color:#ffffff;
+}
+
+main a.btn-instagram {
+    background-color: #C13584;
+    color:#ffffff;
+}
+
+main a.btn-linkedin {
+    background-color: #0e76a8;
+    color:#ffffff;
+}
+
