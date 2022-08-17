@@ -1,27 +1,46 @@
-<aside id="sidebar" class="col-2 pt-5 px-2">
+<aside id="sidebar" class="col-2 pt-5 px-3">
     <h1>Social Networks Data</h1>
     <nav class="mt-5">
+        <h2>Dashboard</h2>
+        <ul>
+            <li>
+                <a href="/index.php">Homepage</a>
+            </li>
+        </ul>
+
         <h2>Réseaux sociaux</h2>
         <ul>
             <li>
-                <a href="">Liste des réseaux sociaux</a>
+                <a href="{{ path('app_social_network_index') }}">Liste des réseaux sociaux</a>
             </li>
             <li>
-                <a href="">Ajouter un réseau social</a>
+                <a href="{{ path('app_social_network_new') }}">Ajouter un réseau social</a>
+            </li>
+            <li>
+                <a href="{{ path('app_social_network_data_index') }}">Données des réseaux sociaux</a>
+            </li>
+            <li>
+                <a href="{{ path('app_social_network_data_new') }}">Ajouter des données à un réseau</a>
             </li>
         </ul>
 
         <h2>Publications</h2>
         <ul>
             <li>
-                <a href="">Liste des publications</a>
+                <a href="{{ path('app_post_index') }}">Liste des publications</a>
             </li>
             <li>
-                <a href="">Ajouter une publication</a>
+                <a href="{{ path('app_post_new') }}">Ajouter une publication</a>
+            </li>
+            <li>
+                <a href="{{ path('app_post_data_index') }}">Données des publications</a>
+            </li>
+            <li>
+                <a href="">Ajouter des données à une publication</a>
             </li>
         </ul>
 
-        <h2>Imports depuis un CSV</h2>
+        {#  <h2>Imports depuis un CSV</h2>
         <ul>
             <li>
                 <a href="">Importer des réseaux sociaux</a>
@@ -29,6 +48,6 @@
             <li>
                 <a href="">Importer des publications</a>
             </li>
-        </ul>
+        </ul> #}
     </nav>
 </aside>

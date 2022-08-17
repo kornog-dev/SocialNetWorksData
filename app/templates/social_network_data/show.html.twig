@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Données de : {{ social_network_datum.network.name }}{% endblock %}
+
+{% block content %}
+    <main id="snd-detail" class="col-10 p-5">
+        <h1>Données de : {{ social_network_datum.network.name }}</h1>
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ social_network_datum.id }}</td>
+            </tr>
+            <tr>
+                <th>Réseau</th>
+                <td>{{ social_network_datum.network.name }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ social_network_datum.date ? social_network_datum.date|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FollowerCount</th>
+                <td>{{ social_network_datum.followerCount }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a class="my-5 btn btn-light" href="{{ path('app_social_network_data_index') }}">Retour à la liste</a>
+
+        <a class="my-5 btn btn-primary" href="{{ path('app_social_network_data_edit', {'id': social_network_datum.id}) }}">Modifier</a>
+
+        {{ include('social_network_data/_delete_form.html.twig') }}
+    </main>
+{% endblock %}

@@ -1,9 +1,63 @@
-#dashboard {
-    background-color: #44475a;
+#dashboard-networks {
+    margin-top: 2em;
 }
 
-#dashboard h1 {
-    font-size:1.3em;
-    color : #6272a4;
+#dashboard-networks h2 {
+    color:#8be9f2;
+    font-size: 1.1em;
     text-transform: uppercase;
+}
+
+#dashboard-networks article {
+    margin: 2.5em;
+    margin-left:0;
+    padding:1em;
+}
+
+#dashboard-networks article p {
+    margin-top:1.5em;
+    margin-bottom:1.5em;
+}
+
+#dashboard-networks article p span{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right:0.5em;
+}
+
+#dashboard-networks article[data-network='facebook'] {
+    background-color: #4267B2;
+}
+
+#dashboard-networks article[data-network='twitter'] {
+    background-color: #1DA1F2;
+}
+
+#dashboard-networks article[data-network='instagram'] {
+    background-color: #C13584;
+}
+
+#dashboard-networks article[data-network='linkedin'] {
+    background-color: #0e76a8;
+}
+
+#dashboard-networks article h3 {
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+#dashboard-networks article h3 span{
+    margin-right: 1em;
+    font-size: 1.2em;
+}
+
+#dashboard-post-data h2 {
+    color:#8be9f2;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+#dashboard-post-data section {
+    background-color: #ffffff;
+    margin-top: 1.5em;
 }
