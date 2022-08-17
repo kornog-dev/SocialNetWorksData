@@ -1,0 +1,30 @@
+<section class="mt-5">
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    <div class="col-4">
+        <div class="mt-2">
+            {{ form_label(form.likes, 'Nombre de likes', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.likes, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+        <div class="mt-2">
+            {{ form_label(form.engagement, 'Engagement', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.engagement, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+        <div class="mt-2">
+            {{ form_label(form.cover, 'Couverture', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.cover, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+        <div class="mt-2">
+            {{ form_label(form.post, 'Publication', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.post, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+        <div class="mt-2">
+            {{ form_label(form.network, 'Réseau', { 'attr' : { 'class' : 'form-label' }} ) }}
+            {{ form_widget(form.network, { 'attr' : { 'class' : 'form-control' }} ) }}
+        </div>
+
+        <button class="btn btn-light mt-4">{{ button_label|default('Enregistrer') }}</button>
+    </div>
+
+    {{ form_end(form) }}
+</section>

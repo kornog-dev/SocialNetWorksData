@@ -3,5 +3,28 @@
 {% block content %}
     <main id="dashboard" class="col-10 p-5">
         <h1>Dashboard</h1>
+        <section id="dashboard-networks" class="row">
+            <h2 class="col-12">Réseaux Sociaux</h2>
+            {% for network in networks %}
+                <article class="col-2" data-network="{{ network.network.name|lower }}">
+                    <h3><span class="{{ network.network.logoUrl }}"></span> {{ network.network.name }}</h3>
+                    <p>
+                        <span>{{ network.followerCount }}</span> followers
+                    </p>
+                    <p>
+                        <span>{{ network.bestCover }}</span> meilleure couverture
+                    </p>
+                </article>
+            {% endfor %}
+        </section>
+        <section id="dashboard-post-data" class="row">
+            <h2 class="col-12">Couverture des publications</h2>
+            <section>
+                <canvas id="dashboard-post-data-chart" class="col-10" height="500"></canvas>
+            </section>
+        </section>
     </main>
+    <script>
+        datasets_url = "{{ path('dashboard_post_data_datasets') }}";
+    </script>
 {% endblock %}

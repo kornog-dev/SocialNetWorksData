@@ -1,0 +1,50 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}Données des publications{% endblock %}
+
+{% block content %}
+    <main id="sn-index" class="col-10 p-5">
+        <h1>Données des publications</h1>
+
+        <section class="row mt-5">
+            <div class="col-3">
+                <a class="btn btn-light" href="{{ path('app_post_data_new') }}">Ajouter des données</a>
+            </div>
+
+            <table class="table mt-5">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Publication</th>
+                    <th>Réseau</th>
+                    <th>Likes</th>
+                    <th>Engagement</th>
+                    <th>Cover</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post_datum in post_datas %}
+                    <tr>
+                        <td>{{ post_datum.id }}</td>
+                        <td>{{ post_datum.post.name }}</td>
+                        <td>{{ post_datum.network.name }}</td>
+                        <td>{{ post_datum.likes }}</td>
+                        <td>{{ post_datum.engagement }}</td>
+                        <td>{{ post_datum.cover }}</td>
+                        <td>
+                            <a href="{{ path('app_post_data_show', {'id': post_datum.id}) }}"><span class="bi-eye-fill"></span></a>
+                            <a href="{{ path('app_post_data_edit', {'id': post_datum.id}) }}"><span class="bi-pencil-fill"></span></a>
+                            <a href="{{ path('app_post_data_edit', {'id': post_datum.id}) }}"><span class="bi-trash-fill"></span></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="7">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+{% endblock %}
